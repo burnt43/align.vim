@@ -1,3 +1,4 @@
+" TEST
 function! align#AlignChar(type, char)
   if a:type ==# 'V'
     let start_line      = line("'<")
