@@ -1,14 +1,14 @@
 function! align#AlignChar(type, char)
   if a:type ==# 'V'
-    let start_line      = line("'<")
-    let end_line        = line("'>")
-    let current_line    = start_line
-    let max_column      = 0
+    let start_line            = line("'<")
+    let end_line              = line("'>")
+    let current_line          = start_line
+    let max_column            = 0
     let column_number_by_line = {}
 
     " alter the pattern if it needs to be escaped in very magic
     if a:char ==# '='
-      let pattern = '\v\s\=\s'
+      let pattern = '\v\s\zs\=\ze\s'
     else
       let pattern = '\v' . a:char
     end
