@@ -1,5 +1,5 @@
 function! align#SetAlignChar(char)
-  let b:align_char = char
+  let b:align_char = a:char
 endfunction
 
 function! align#AlignChar(type)
