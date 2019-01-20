@@ -1,5 +1,5 @@
-function! align#SetAlignChar(char)
-  let b:align_char = a:char
+function! align#SetAlignPattern(pattern)
+  let b:align_pattern = a:pattern
 endfunction
 
 function! align#AlignChar(type)
@@ -15,17 +15,10 @@ function! align#AlignChar(type)
   let max_column            = 0
   let column_number_by_line = {}
 
-  " alter the pattern if it needs to be escaped in very magic
-  if b:align_char ==# '='
-    let pattern = '\v\s\zs\=\ze\s'
-  else
-    let pattern = '\v' . b:align_char
-  end
-
   " loop to find what is the right-most char
   while current_line <= end_line
     " see if the line we're on has the pattern and get the column is appears
-    let match_column_number = matchstrpos(getline(current_line), pattern)[1]
+    let match_column_number = matchstrpos(getline(current_line), b:align_pattern)[1]
 
     if match_column_number !=# -1
       " store the column number into a dictionary
